@@ -66,7 +66,7 @@ def remove_outliers(df, k, col_list):
     return df
 
 # Scale data after splitting with MinMax
-def scale_data_mvp(train, validate, test, return_scaler=False):
+def scale_data(train, validate, test, return_scaler=False):
     '''
     Scales the 3 data splits.
     
@@ -74,7 +74,10 @@ def scale_data_mvp(train, validate, test, return_scaler=False):
     
     If return_scaler is true, the scaler object will be returned as well.
     '''
-    columns_to_scale = ['bedrooms', 'bathrooms', 'square_feet']
+    columns_to_scale = ['life_expectancy', 'adult_mortality', 'infant_deaths', 'alcohol',
+                        'percentage_expenditure', 'hepatitis_b', 'measles', 'bmi', 'under_five_deaths', 
+                        'polio', 'total_expenditure', 'diphtheria', 'hiv_aids', 'gdp', 'population',
+                        'thinness_1to19_years', 'thinness_5to9_years', 'income_composition_of_resources', 'schooling']
     
     train_scaled = train.copy()
     validate_scaled = validate.copy()
@@ -93,7 +96,7 @@ def scale_data_mvp(train, validate, test, return_scaler=False):
         return train_scaled, validate_scaled, test_scaled
 
 def visualize_scaler(scaler, df, target_columns, bins=10):
-    fig, axs = plt.subplots(len(target_columns), 2, figsize=(16, 9))
+    fig, axs = plt.subplots(len(target_columns), 2, figsize=(15, 12))
     df_scaled = df.copy()
     df_scaled[target_columns] = scaler.fit_transform(df[target_columns])
     for (ax1, ax2), col in zip(axs, target_columns):
@@ -101,6 +104,13 @@ def visualize_scaler(scaler, df, target_columns, bins=10):
         ax1.set(title=f'{col} before scaling', xlabel=col, ylabel='count')
         ax2.hist(df_scaled[col], bins=bins)
         ax2.set(title=f'{col} after scaling with {scaler.__class__.__name__}', xlabel=col, ylabel='count')
+    # set the spacing between subplots
+    plt.subplots_adjust(left=0.1,
+                        bottom=0.05, 
+                        right=0.9, 
+                        top=0.98, 
+                        wspace=0.4, 
+                        hspace=0.4)
     plt.tight_layout()
     return fig, axs
 
@@ -143,13 +153,42 @@ def impute_missing_values(df, columns_strategy):
 
 def prepare_who(df):
     '''Prepare who for data exploration.'''
-    df = get_single_units(df)
-    df = handle_missing_values(df)
-    train, validate, test = impute_missing_values(df, columns_strategy)
+    # lowercase
+    df.columns = df.columns.str.lower()
+    #replace white spaces with underscores
+    df.columns = df.columns.str.replace(' ', '_')
+    # Rename columns for clarity and consistency
+    df.rename(columns = {'life_expectancy_':'life_expectancy',
+                     'measles_':'measles',
+                     '_bmi_':'bmi', 
+                     'under-five_deaths_':'under_five_deaths',
+                     'diphtheria_':'diphtheria', 
+                     '_hiv/aids': 'hiv_aids', 
+                     '_thinness__1-19_years':'thinness_1to19_years',
+                     '_thinness_5-9_years':'thinness_5to9_years'}, inplace=True)
+    # Impute mean using Simple Imputer
+    columns_to_impute = ['life_expectancy','adult_mortality', 
+                          'alcohol', 'hepatitis_b', 
+                          'bmi', 'polio', 'total_expenditure',
+                          'diphtheria', 'gdp', 'population',
+                         'thinness_1to19_years', 'thinness_5to9_years', 
+                          'income_composition_of_resources', 'schooling']
+    imputer = SimpleImputer(strategy='mean', missing_values=np.nan)
+    imputer = imputer.fit(df[columns_to_impute])
+    df[columns_to_impute] = imputer.transform(df[columns_to_impute])
+    # I'll one hot encode that status variable since it has only two values
+    dummy_df = pd.get_dummies(df[['status']], dummy_na = False, drop_first = True)
+    df = pd.concat([df, dummy_df], axis = 1)
+    df.rename(columns={'status_Developing':'developing'}, inplace=True)
+    df = df.drop(columns=['status'])
+    # Change the year to object data type since it is categorical
+    df.year = df.year.astype(object)
+    #Split Data
+    train, validate, test = split_data(df)
     return train, validate, test
     
 def wrangle_who():
-    '''Acquire and prepare data from Zillow database for explore'''
+    '''Acquire and prepare who data from csv file for exploration.'''
     train, validate, test = prepare_who(acquire())
     
     return train, validate, test
