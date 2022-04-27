@@ -29,14 +29,18 @@ Table of Contents
  
  
 #### 1.  GOAL:
-The goal of this project is to use economic and public health data acquired from the (WHO) World Health Organization to predict life expectancy. 
+The goal of this project is to use economic and public health data acquired from the (WHO) World Health Organization to create a machine-learning model that can predict a country's life expectancy. My model and insights from data analysis can be used to guide government policy making towards improving the average life expectancy of its population.
  
-#### 2. DESCRIPTION:
+#### 2. DESCRIPTION OF DATA:
 The data set was acquired from Kaggle user KUMARRAJARSHI: https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who
 "Although there have been lot of studies undertaken in the past on factors affecting life expectancy considering demographic variables, income composition and mortality rates. It was found that affect of immunization and human development index was not taken into account in the past. Also, some of the past research was done considering multiple linear regression based on data set of one year for all the countries. Hence, this gives motivation to resolve both the factors stated previously by formulating a regression model based on mixed effects model and multiple linear regression while considering data from a period of 2000 to 2015 for all the countries. Important immunization like Hepatitis B, Polio and Diphtheria will also be considered. In a nutshell, this study will focus on immunization factors, mortality factors, economic factors, social factors and other health related factors as well. Since the observations this dataset are based on different countries, it will be easier for a country to determine the predicting factor which is contributing to lower value of life expectancy. This will help in suggesting a country which area should be given importance in order to efficiently improve the life expectancy of its population."
+
+#### 3. PROCESS
+
+Upon successful acquistion of the *WHO* dataset from Kaggle. It was then transformed into a series of DataFrames which could be used in exploration and model creation. The intial raw dataframe consisted of, 2938 rows and 22 columns. For data cleaning, columns were renames, null values imputed for using the mean and a dummy variable was created for development status. My cleaned data set had the same amount of rows and columns. Through statistical testing and exploratory analysis, I was able to determine top drivers of life expectancy including: 'income_composition_of_resources', 'schooling', 'hiv_aids', 'gdp', 'developing', and 'bmi.' Using these drivers as features, I built several types of regression models to predict life expectancy and evaluated my best model, a polynomial regression model, on out-of-sample data. This model was able to predict life_expectancy with 84% accuracy and a RMSE score on 3.81. 
  
 
-#### 3.INITIAL QUESTIONS:
+#### 4.INITIAL QUESTIONS:
 The focus of the project is identifying the best product category to expand on. Below are some of the initial questions this project looks to answer throughout the Data Science Pipeline.
  
 #### Data-Focused Questions
@@ -44,14 +48,14 @@ The focus of the project is identifying the best product category to expand on. 
 
 2. Is there a linear relationship between schooling and life expectancy? Is this a real correlation or is it because schooling is correlated with income composition? Which is the more important causal variable for life expectancy?
 
-3. Is there a significant relationship between being a developing country and infant mortality?
+3. Is there a significant relationship between status as a developing country and infant mortality?
 
 4. Is there a signifiant relationship between gdp and life expectancy?
 
 5. Is there a linear relationship between hiv_aids prevelance and life expectancy?
 
   
-#### 4. DELIVERABLES:
+#### 5. DELIVERABLES:
 - [x] README file - provides an overview of the project and steps for project reproduction
 - [x] Draft Jupyter Notebook - provides all steps taken to produce the project
 - [x] Report Jupyter Notebook - provides final presentation-ready wrangle, exploration and modeling
