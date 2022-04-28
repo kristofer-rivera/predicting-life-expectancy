@@ -168,13 +168,14 @@ Using Jupyter Notebook:
 
 ## IV. PROJECT MODULES:
 - [x] wrangle.py - provides reproducible python code to automate acquiring, preparing, and splitting the data
-- [x] model.py - provides reproducible python code to automate create prophet machine learning algorithm
+- [x] evaluate.py - provides reproducible python code to automate model evaluation and visualization
+- [x] explore.py - provides reproducible python code to automate exploratory data analyis and statistcal testing
  
   
 ## V. PROJECT REPRODUCTION:
 ### Steps to Reproduce
 - [x] You'll need to download the .csv from Kaggle: https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who
-- [x] Clone our repo (including the wrangle.py, model.py)
-- [x] Import python libraries:  pandas, matplotlib, seaborn, numpy, and prophet
+- [x] Clone our repo (including the wrangle.py, explore.py, evaluate.py)
+- [x] Import python libraries:  pandas, matplotlib, seaborn, numpy, scipy, sklearn
 - [x] Follow steps as outlined in the README.md. and draft notebooks
-- [x] Run Final_Report.ipynb to view the final product
+- [x] Run final_notebook.ipynb to view the final product
