@@ -110,3 +110,27 @@ def plot_residuals(actual, predicted, data):
     plt.xlabel('actual value ($y$)')
     plt.title('Actual vs Residual', fontsize = 15)
     plt.show()
+
+    
+## Functions for final notebook
+
+def viz1(predictions_test):
+    plt.figure(figsize = (16, 8))
+    plt.plot(predictions_test.actual, predictions_test.actual, color = 'green')
+    plt.plot(predictions_test.actual, predictions_test.le_pred_mean, color = 'red')
+    plt.scatter(predictions_test.actual, predictions_test.le_pred_poly_rfe, alpha = 0.5)
+    plt.annotate('Ideal: Actual Life Expectancy', (1.2*10**6, 1.25*10**6), rotation = 25)
+    plt.annotate('Baseline: Mean Life Expectancy', (1.25*10**6, .3*10**6), color = 'red')
+    plt.title('Visualizing Polynomial RFE Model on Test', fontsize=20)
+    plt.show()
+    
+def viz2(predictions_test):
+# plot to visualize actual vs predicted. 
+    plt.figure(figsize=(16,8))
+    plt.hist(predictions_test.actual, color='blue', alpha=.5, label="Actual Assessed Value")
+    plt.hist(predictions_test.le_pred_poly_rfe, color='red', alpha=.5, label="Model: Polynomial RFE Model")
+    plt.xlabel("Life Expectancy Distribution")
+    plt.ylabel("Count")
+    plt.title("Comparing Actual Life Expectancy vs. Predicted Values for the Top Model", fontsize=20)
+    plt.legend()
+    plt.show()
