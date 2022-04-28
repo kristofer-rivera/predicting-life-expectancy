@@ -56,6 +56,8 @@ The focus of the project is identifying the best product category to expand on. 
 
 5. Is there a linear relationship between hiv_aids prevelance and life expectancy?
 
+6. Is there a linear relationship between bmi and life expectancy?
+
   
 #### 5. DELIVERABLES:
 - [x] README file - provides an overview of the project and steps for project reproduction
