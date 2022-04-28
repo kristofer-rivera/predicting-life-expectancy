@@ -323,3 +323,33 @@ def plot_swarm_grid_with_color(train, target, cat_vars, quant_vars):
             ax[i].set_ylabel(quant)
             ax[i].set_title(cat)
         plt.show()
+
+#### Functions for final notebook
+
+# I want to start by looking at life expectancy by country 
+def countries(train):
+    le_country = train.groupby('country')['life_expectancy'].mean()
+    le_country.plot(kind='bar', figsize=(50,15), fontsize=25, color=['black', 'red', 'green', 'blue', 'orange', 'cyan'])
+    plt.title("Life Expectancy by Country",fontsize=40)
+    plt.xlabel("Country",fontsize=35)
+    plt.ylabel("Avg Life Expectancy",fontsize=35)
+    plt.show()
+    
+def years(train):
+# Life_Expectancy by Year using bar plot.
+    plt.figure(figsize=(7,5))
+    plt.bar(train.groupby('year')['year'].count().index,train.groupby('year')['life_expectancy'].mean(),color='blue',alpha=0.65)
+    plt.xlabel("Year",fontsize=12)
+    plt.ylabel("Avg Life Expectancy",fontsize=12)
+    plt.title("Life Expectancy by Year")
+    plt.show()
+    
+def heatmap(train):
+# Let's create a correlation matrix to create our heatmap
+# Create the correlation matrix for all exams.
+    le_corr = train.drop(columns=['year', 'country']).corr()
+
+    plt.figure(figsize=(15,15))
+    sns.heatmap(le_corr, square=True, annot=True, linewidths=.5)
+    plt.title("Correlation Matrix")
+    plt.show()
