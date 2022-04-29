@@ -329,8 +329,8 @@ def plot_swarm_grid_with_color(train, target, cat_vars, quant_vars):
 # I want to start by looking at life expectancy by country 
 def countries(train):
     le_country = train.groupby('country')['life_expectancy'].mean()
-    le_country.plot(kind='bar', figsize=(50,15), fontsize=25, color=['black', 'red', 'green', 'blue', 'orange', 'cyan'])
-    plt.title("Life Expectancy by Country",fontsize=40)
+    le_country.plot(kind='bar', figsize=(55,30), fontsize=25, color=['black', 'red', 'green', 'blue', 'orange', 'cyan'])
+    plt.title("Life Expectancy by Country",fontsize=90)
     plt.xlabel("Country",fontsize=35)
     plt.ylabel("Avg Life Expectancy",fontsize=35)
     plt.show()
