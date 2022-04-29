@@ -1,4 +1,4 @@
-# Predicting Life Expectancy - Polynomial Regression
+# Predicting Life Expectancy -- WHO Data Set 
 Kristofer Rivera -- April 2022
  
 ===
@@ -30,7 +30,7 @@ Table of Contents
  
  
 #### 1.  GOAL:
-The goal of this project is to use economic and public health data acquired from the (WHO) World Health Organization to create a machine-learning model that can predict a country's life expectancy. My model and insights from data analysis can be used to guide government policy making towards improving the average life expectancy of its population.
+The goal of this project is to use economic and public health data acquired from the World Health Organization (WHO) to create a machine-learning model that can predict a country's life expectancy. My model and insights from data analysis can be used to guide government policy making towards improving the average life expectancy of its population.
  
 #### 2. DESCRIPTION OF DATA:
 The data set was acquired from Kaggle user KUMARRAJARSHI: https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who
