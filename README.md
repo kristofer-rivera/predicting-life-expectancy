@@ -62,7 +62,7 @@ The focus of the project is identifying the best product category to expand on. 
 #### 5. DELIVERABLES:
 - [x] README file - provides an overview of the project and steps for project reproduction
 - [x] Draft Jupyter Notebook - provides all steps taken to produce the project
-- [x] Report Jupyter Notebook - provides final presentation-ready wrangle, exploration and modeling
+- [x] Final Jupyter Notebook - provides final presentation-ready wrangle, exploration and modeling
  
  
 ## II. PROJECT DATA CONTEXT
