@@ -337,7 +337,7 @@ def countries(train):
     
 def years(train):
 # Life_Expectancy by Year using bar plot.
-    plt.figure(figsize=(7,5))
+    plt.figure(figsize=(15,10))
     plt.plot(train.groupby('year')['year'].count().index,train.groupby('year')['life_expectancy'].mean(),color='blue',alpha=0.65)
     plt.xlabel("Year",fontsize=12)
     plt.ylabel("Avg Life Expectancy",fontsize=12)
