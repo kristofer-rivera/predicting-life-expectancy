@@ -1,4 +1,4 @@
-# Predicting Life Expectancy -- WHO Data Set 
+# Predicting Life Expectancy (WHO)
 Kristofer Rivera -- April 2022
  
 ===
