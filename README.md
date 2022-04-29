@@ -43,9 +43,9 @@ Upon successful acquistion of the *WHO* dataset from Kaggle. It was then transfo
  
 
 #### 4.INITIAL QUESTIONS:
-The focus of the project is identifying the best product category to expand on. Below are some of the initial questions this project looks to answer throughout the Data Science Pipeline.
+The focus of the project is identifying the drivers of life expectancy in a population. Below are some of the initial questions this project looks to answer throughout the Data Science Pipeline.
  
-#### Data-Focused Questions:
+#### Focused Questions:
 1. Is there a linear relationship between income composition of resources and life expectancy?
 
 2. Is there a linear relationship between schooling and life expectancy? Is this a real correlation or is it because schooling is correlated with income composition? Which is the more important causal variable for life expectancy?
