@@ -50,9 +50,9 @@ The focus of the project is identifying the best product category to expand on. 
 
 2. Is there a linear relationship between schooling and life expectancy? Is this a real correlation or is it because schooling is correlated with income composition? Which is the more important causal variable for life expectancy?
 
-3. Is there a significant relationship between status as a developing country and infant mortality?
+3. Is there a relationship between a countries' development status and infant mortality? Are these dependent on eachother?
 
-4. Is there a signifiant relationship between gdp and life expectancy?
+4. Is there a linear relationship between gdp and life expectancy?
 
 5. Is there a linear relationship between hiv_aids prevelance and life expectancy?
 
